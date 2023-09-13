@@ -1,0 +1,12 @@
+.container {
+    position: fixed;
+    top: 0; /* Position at the top */
+    left: 50%; /* Center horizontally */
+    transform: translateX(-50%); /* Center horizontally */
+    text-align: center;
+    width: 64%;
+    min-height: 35vh;
+    background: linear-gradient(135deg, #ff6200, #eaff00);
+    padding: 10px;
+    border-radius: 25px;
+}
