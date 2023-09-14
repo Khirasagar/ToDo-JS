@@ -15,10 +15,15 @@ if(back){
 
 
 const contactForm = document.getElementById("contact_form");
+
 if (contactForm) {
   contactForm.addEventListener("submit", function (e) {
     e.preventDefault(); // Prevent the form from submitting normally
-    
+
+    // Retrieve the existing data from local storage or initialize an empty array
+    let existingData = localStorage.getItem("student_data");
+    existingData = existingData ? JSON.parse(existingData) : [];
+
     // Create an object to store the form values
     const formData = {
       fullName: contactForm.elements["first_name"].value,
@@ -30,13 +35,13 @@ if (contactForm) {
       contactNo: contactForm.elements["contact_number"].value,
     };
 
-    // Convert the form values object to a JSON string
-    const formDataJson = JSON.stringify(formData);
+    // Append the new form data to the existing data array
+    existingData.push(formData);
 
-    // Store the JSON string in local storage with a unique key (e.g., "student_data")
-    localStorage.setItem("student_data", formDataJson);
+    // Store the updated data array in local storage
+    localStorage.setItem("student_data", JSON.stringify(existingData));
 
-    // Optionally, you can also display a success message or redirect the user
+    // Optionally, you can also display a success message or reset the form
     console.log("Form data saved to local storage:", formData);
 
     // Reset the form if needed
